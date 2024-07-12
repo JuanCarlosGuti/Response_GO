@@ -11,24 +11,24 @@ type ErrorResponse struct {
 }
 
 func InternalServerError(msg string) Response {
-	return error(msg, http.StatusInternalServerError)
+	return errorR(msg, http.StatusInternalServerError)
 }
 
 func NotFound(msg string) Response {
-	return error(msg, http.StatusNotFound)
+	return errorR(msg, http.StatusNotFound)
 }
 
 func UnAuthorized(msg string) Response {
-	return error(msg, http.StatusUnauthorized)
+	return errorR(msg, http.StatusUnauthorized)
 }
 
 func Forbidden(msg string) Response {
-	return error(msg, http.StatusForbidden)
+	return errorR(msg, http.StatusForbidden)
 }
 func BadRequest(msg string) Response {
-	return error(msg, http.StatusBadRequest)
+	return errorR(msg, http.StatusBadRequest)
 }
-func error(message string, code int) Response {
+func errorR(message string, code int) Response {
 	return &ErrorResponse{
 		Message: message,
 		Status:  code,
